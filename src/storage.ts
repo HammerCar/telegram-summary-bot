@@ -26,5 +26,7 @@ export const load = async (chatId: number) => {
   }
 
   const file = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(file) as TelegramBot.Message[];
+  const messages = JSON.parse(file) as TelegramBot.Message[];
+
+  return messages;
 };

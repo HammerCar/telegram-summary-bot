@@ -66,7 +66,8 @@ bot.onText(/\/(?:tldr|summary)(?: (.+))?/, async (msg, match) => {
     return;
   }
 
-  const message = await bot.sendMessage(chatId, summary.replace(".", "\\."), {
+  const escaped = summary.replaceAll(".", "\\.").replaceAll("-", "\\-");
+  const message = await bot.sendMessage(chatId, escaped, {
     parse_mode: "MarkdownV2",
   });
 
