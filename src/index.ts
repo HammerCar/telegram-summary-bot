@@ -46,7 +46,7 @@ bot.onText(/\/(?:tldr|summary)(?: (.+))?/, async (msg, match) => {
           msg.from?.first_name
         } ${msg.from?.last_name}> ${
           msg.forward_from
-            ? `Forwarded from ${msg.forward_from.first_name} ${msg.forward_from.last_name}: `
+            ? `(Forwarded from ${msg.forward_from.first_name} ${msg.forward_from.last_name}) `
             : ""
         }${msg.text}`
     )

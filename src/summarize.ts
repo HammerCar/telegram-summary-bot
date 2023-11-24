@@ -10,7 +10,7 @@ export default async function summarize(content: string) {
       {
         role: "system",
         content:
-          "You are a summary bot that will summarize a group chat conversation when requested. You will be given the message history that you have to summarize. Only respond with the summary. You can use markdown to format your response.",
+          "You are a summary bot that will summarize a group chat conversation when requested. You will be given the message history that you have to summarize. Only respond with the summary. You can use markdown to format your response. Prefer listing main discussion point with a bullet point list. ",
       },
       { role: "user", content },
     ],
