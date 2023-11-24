@@ -66,7 +66,7 @@ bot.onText(/\/(?:tldr|summary)(?: (.+))?/, async (msg, match) => {
     return;
   }
 
-  bot.sendMessage(chatId, summary, {
+  bot.sendMessage(chatId, summary.replace(".", "\\."), {
     parse_mode: "MarkdownV2",
   });
 });
