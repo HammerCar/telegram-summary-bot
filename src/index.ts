@@ -66,9 +66,22 @@ bot.onText(/\/(?:tldr|summary)(?: (.+))?/, async (msg, match) => {
     return;
   }
 
-  bot.sendMessage(chatId, summary.replace(".", "\\."), {
+  const message = await bot.sendMessage(chatId, summary.replace(".", "\\."), {
     parse_mode: "MarkdownV2",
   });
+
+  if (!message) {
+    bot.sendMessage(chatId, "Error sending message");
+    return;
+  }
+
+  messages[chatId].push(message);
+
+  while (messages[chatId].length > maxMessageCount) {
+    messages[chatId].shift();
+  }
+
+  save(chatId, messages[chatId]);
 });
 
 bot.on("message", async (msg) => {
